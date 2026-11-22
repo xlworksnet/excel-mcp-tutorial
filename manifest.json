@@ -1,0 +1,56 @@
+{
+  "manifest_version": "0.3",
+  "name": "excel-schedule",
+  "display_name": "Excel 업무 일정",
+  "version": "1.0.0",
+  "description": "Claude가 엑셀에 열린 업무 일정표를 읽고 고칠 수 있게 해 줍니다.",
+  "author": {
+    "name": "XLWorks",
+    "url": "https://xlworks.net"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "src/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/src/index.js"
+      ],
+      "env": {
+        "BACKUP_ENABLED": "${user_config.backup_enabled}",
+        "BACKUP_DIR": "${user_config.backup_dir}",
+        "KEEP_COUNT": "${user_config.keep_count}"
+      }
+    }
+  },
+  "user_config": {
+    "backup_enabled": {
+      "type": "boolean",
+      "title": "변경 전 자동 백업",
+      "description": "Claude가 파일을 고치기 전에 사본을 만듭니다.",
+      "default": true
+    },
+    "backup_dir": {
+      "type": "directory",
+      "title": "백업 폴더",
+      "description": "비워 두면 임시 폴더(%TEMP%\\excel-mcp-backup)를 씁니다.",
+      "required": false
+    },
+    "keep_count": {
+      "type": "number",
+      "title": "파일별 보관 개수",
+      "default": 20,
+      "min": 1,
+      "max": 200,
+      "description": "파일 하나당 남겨 둘 백업 개수입니다. 넘으면 오래된 것부터 지웁니다."
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "win32"
+    ],
+    "runtimes": {
+      "node": ">=20.0.0"
+    }
+  }
+}

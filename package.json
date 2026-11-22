@@ -1,0 +1,18 @@
+{
+  "name": "excel-mcp-tutorial",
+  "version": "1.0.0",
+  "description": "Claude와 엑셀 업무 일정표를 연결하는 MCP 서버 예제 (엑셀웍스 AI-Excel 연동 강좌)",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.2.0"
+  }
+}
